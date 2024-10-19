@@ -17,27 +17,29 @@ umi.use(signerIdentity(signer));
         // Follow this JSON structure
         // https://docs.metaplex.com/programs/token-metadata/changelog/v1.0#json-structure
 
-        // const image = ???
-        // const metadata = {
-        //     name: "?",
-        //     symbol: "?",
-        //     description: "?",
-        //     image: "?",
-        //     attributes: [
-        //         {trait_type: '?', value: '?'}
-        //     ],
-        //     properties: {
-        //         files: [
-        //             {
-        //                 type: "image/png",
-        //                 uri: "?"
-        //             },
-        //         ]
-        //     },
-        //     creators: []
-        // };
-        // const myUri = ???
-        // console.log("Your metadata URI: ", myUri);
+        const image = "https://devnet.irys.xyz/5jeemZX36acSXUtXTMAdVMiFgU86GRfzmsiEdvRMZdfh";
+        const metadata = {
+            name: "Rugged by jeff's beard",
+            symbol: "legendary rugg",
+            description: "dont get lost in there...",
+            image: image,
+            attributes: [
+                {trait_type: 'color', value: 'white'},
+                {trait_type: 'what she said ??', value: 'its long'},
+                {trait_type: 'rarity', value: '100%'},                
+            ],
+            properties: {
+                files: [
+                    {
+                        type: "image/png",
+                        uri: image
+                    },
+                ]
+            },
+            creators: [keypair.publicKey]
+        };
+        const myUri = await umi.uploader.uploadJson(metadata); //https://devnet.irys.xyz/4Hy7RopWSG4LehQMAiV4zBqHtLntBH2P2cP54cyijZkK
+        console.log("Your metadata URI: ", myUri);
     }
     catch(error) {
         console.log("Oops.. Something went wrong", error);
